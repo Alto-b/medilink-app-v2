@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:medilink/admin/db/hosp_functions.dart';
 import 'package:medilink/admin/model/hospmodel.dart';
 import 'package:medilink/styles/custom_widgets.dart';
+import 'package:medilink/user/pages/hospitals_search.dart';
 
 class HospitalPage extends StatefulWidget {
   const HospitalPage({super.key});
@@ -30,6 +31,14 @@ void initState(){
       //appbar
       appBar: AppBar(
         title: Text("OUR HOSPITALS",style: appBarTitleStyle()),
+        actions: [
+          
+            IconButton(onPressed: (){
+              showSearch(
+                context: context, 
+                delegate: HospSearchDelegate());
+            }, icon: Icon(Icons.search))
+        ],
       ) ,
 
       body:SingleChildScrollView(
@@ -38,62 +47,62 @@ void initState(){
               children: [
 
                 //search field
-                SizedBox(height: 30,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      height: 60,
-                      width: 60,
+                // SizedBox(height: 30,),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   mainAxisSize: MainAxisSize.min,
+                //   children: [
+                //     Container(
+                //       height: 60,
+                //       width: 60,
                       
-                      decoration: BoxDecoration(color: const Color.fromARGB(255, 255, 255, 255),
-                       borderRadius: BorderRadius.only(topLeft: Radius.circular(30),bottomLeft: Radius.circular(30)),
-                       boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            blurRadius: 10,
-                            offset: Offset(0, 5)
-                          )
-                        ]
-                      ),
-                        child: Icon(Icons.search),
-                    ),
-                    Container(
-                      height: 60,
-                      width: 280,
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        borderRadius: BorderRadius.only(topRight: Radius.circular(30),bottomRight: Radius.circular(30)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            blurRadius: 10,
-                            offset: Offset(3, 4)
-                          )
-                        ]
-                      ),
-                      child:
-                          TextField(
-                            controller: _searchController,
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(50),
-                                  borderSide: BorderSide.none
-                                ),
-                                hintText: "Search hospitals"
-                            ),
-                            onChanged: (query) {
-                              setState(() {
+                //       decoration: BoxDecoration(color: const Color.fromARGB(255, 255, 255, 255),
+                //        borderRadius: BorderRadius.only(topLeft: Radius.circular(30),bottomLeft: Radius.circular(30)),
+                //        boxShadow: [
+                //           BoxShadow(
+                //             color: Colors.grey.withOpacity(0.5),
+                //             blurRadius: 10,
+                //             offset: Offset(0, 5)
+                //           )
+                //         ]
+                //       ),
+                //         child: Icon(Icons.search),
+                //     ),
+                //     Container(
+                //       height: 60,
+                //       width: 280,
+                //       decoration: BoxDecoration(
+                //         color: Color.fromARGB(255, 255, 255, 255),
+                //         borderRadius: BorderRadius.only(topRight: Radius.circular(30),bottomRight: Radius.circular(30)),
+                //         boxShadow: [
+                //           BoxShadow(
+                //             color: Colors.grey.withOpacity(0.5),
+                //             blurRadius: 10,
+                //             offset: Offset(3, 4)
+                //           )
+                //         ]
+                //       ),
+                //       child:
+                //           TextField(
+                //             controller: _searchController,
+                //             decoration: InputDecoration(
+                //                 border: OutlineInputBorder(
+                //                   borderRadius: BorderRadius.circular(50),
+                //                   borderSide: BorderSide.none
+                //                 ),
+                //                 hintText: "Search hospitals"
+                //             ),
+                //             onChanged: (query) {
+                //               setState(() {
                                 
-                              });
-                            },
-                          ),
+                //               });
+                //             },
+                //           ),
                        
-                    ),
-                  ],
-                ),
-                SizedBox(height: 40,),
+                //     ),
+                //   ],
+                // ),
+                // SizedBox(height: 10,),
 
                 //listing specialization
                 Padding(

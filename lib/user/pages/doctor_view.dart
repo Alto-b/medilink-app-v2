@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:medilink/admin/db/doctor_functions.dart';
 import 'package:medilink/admin/model/doctor_model.dart';
 import 'package:medilink/styles/custom_widgets.dart';
+import 'package:medilink/user/pages/doctor_search.dart';
 
 class DoctorViewPage extends StatefulWidget {
   const DoctorViewPage({super.key});
@@ -30,6 +31,13 @@ class _DoctorViewPageState extends State<DoctorViewPage> {
 
       appBar: AppBar(
         title: Text("OUR DOCTORS",style: appBarTitleStyle(),),
+        actions: [       
+            IconButton(onPressed: (){
+              showSearch(
+                context: context, 
+                delegate: DoctorSearchDelegate());
+            }, icon: Icon(Icons.search))
+        ],
       ),
 
       body: SingleChildScrollView(
