@@ -10,25 +10,25 @@ class DoctorModel{
   int? id;
 
   @HiveField(1)
-  final String name;
+   String name;
 
   @HiveField(2)
-  final String gender;
+   String gender;
 
   @HiveField(3)
-  final String qualification;
+   String qualification;
 
   @HiveField(4)
-  final String dob;
+   String dob;
 
   @HiveField(5)
-  final String doj;
+   String doj;
 
   @HiveField(6)
-  final String hospital;
+   String hospital;
 
   @HiveField(7)
-  final String specialization;
+   String specialization;
 
   @HiveField(8)
   String photo; 

@@ -34,9 +34,46 @@ Future<void> deleteDoctor(int id) async{
   getDoctor();
 }
 
-//to get user count
+//to get doctor count
 Future<int> doctorStats() async{
   final docDB = await Hive.openBox<DoctorModel>('doctor_db');
   final docCount=docDB.length;
   return docCount;
+}
+
+Future<void> editDoctor(
+  int id, 
+  String updatedPhoto,
+  String updatedName,
+  String updatedGender,
+  String updatedQualification,
+  String updatedHospital,
+  String updatedDOB,
+  String updatedDOJ,
+  String updatedDept
+  
+  ) async {
+  final deptBox = await Hive.openBox<DoctorModel>('doctor_db');
+  final existingDoctor = deptBox.values.firstWhere((doc) => doc.id == id);
+
+  if (existingDoctor == null) {
+    //print("no doc");
+  }
+  else{
+    // Update 
+    existingDoctor.photo=updatedPhoto;
+    existingDoctor.name = updatedName;
+    existingDoctor.gender=updatedGender;
+    existingDoctor.qualification=updatedQualification;
+    existingDoctor.hospital=updatedHospital;
+    existingDoctor.dob=updatedDOB;
+    existingDoctor.doj=updatedDOJ;
+    existingDoctor.specialization=updatedDept;
+
+    // Save the updated 
+    await deptBox.put(id, existingDoctor);
+   getDoctor();
+ 
+
+  }
 }

@@ -30,10 +30,6 @@ class _AddDoctorState extends State<AddDoctor> {
   final TextEditingController _dojController=TextEditingController();
   String? selectedGender;
   final List<String> genderOptions = ['Male', 'Female', 'Not Specified'];
-  // String? selectedHospital;
-  // final List<String> hospitalOptions = ['Male', 'Female', 'Not Specified'];
-  //  String? selectedSpecialization;
-  //   List<String> SpecializationOptions = ['q','w'];
 
  late Box<DepartmentModel> deptBox;
   late Box<HospModel> hospBox;
@@ -198,30 +194,7 @@ void updateLists() {
                       _selectDoj(context);
                        },
                   ),SizedBox(height: 20,),
-
-//hospital selection
-                // DropdownButtonFormField(
-                //   validator: (value){
-                //     if(value == null || value.isEmpty){
-                //       return "select Hospital";
-                //     }
-                //     return null;
-                //   },
-                //   value: selectedHospital,
-                //   items:genderOptions.map((String gender) {
-                //     return DropdownMenuItem<String>(
-                //       value: gender,
-                //       child: Text(gender)
-                //       );
-                //   }).toList() ,
-                //    onChanged: (String? newValue){
-                //     setState(() {
-                //       selectedHospital=newValue!;
-                //     });
-                //    },
-                //    decoration: InputDecoration(
-                //     hintText: "Hospital"
-                //    ),),SizedBox(height: 20,),
+//selecet hospital
                  DropdownButtonFormField<String>(
                   validator: (value){
                     if(value == null ){
@@ -285,7 +258,8 @@ void updateLists() {
         
                   ],
         
-              ))
+              )
+              )
             ],
           ),
         ),
@@ -310,7 +284,7 @@ String? validateFullName(String? value) {
   return null; 
 }
 
-//to validate full name
+//to validate qualification
 String? validateQualification(String? value) {
   
   final trimmedValue = value?.trim();
