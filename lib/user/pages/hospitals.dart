@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:medilink/admin/db/hosp_functions.dart';
 import 'package:medilink/admin/model/hospmodel.dart';
 import 'package:medilink/styles/custom_widgets.dart';
@@ -58,7 +59,16 @@ void initState(){
                    ?hospitalList
                    :hospitalList.where((hosp) => 
                    hosp.hosp.toLowerCase().contains(_searchController.text.toLowerCase())).toList();
-                   
+
+                    if (hospitalList.isEmpty) {
+                    return Center(
+                      child: Text("Will be updated soon",
+                      style: GoogleFonts.play(
+                        fontWeight: FontWeight.w700,
+                        fontSize:20,
+                        color: Colors.grey),),
+                    );
+                  }                   
                    
                     return Padding(
                       padding: const EdgeInsets.all(8.0),

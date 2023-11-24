@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:medilink/admin/db/appointment_functions.dart';
@@ -8,6 +9,7 @@ import 'package:medilink/admin/model/appointment_model.dart';
 import 'package:medilink/guest/model/usermodel.dart';
 import 'package:medilink/guest/pages/login.dart';
 import 'package:medilink/styles/custom_widgets.dart';
+import 'package:medilink/user/pages/book_appointment.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MyAppointments extends StatefulWidget {
@@ -71,7 +73,24 @@ Future<void> getUser() async {
                     child: ValueListenableBuilder(
                       valueListenable: userAppointmentListNotifier,
                       builder: (BuildContext ctx, List<AppointmentModel> userAppointmentList,Widget? child) {
-                        
+                        if (userAppointmentList.isEmpty) {
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("No appointments made",
+                          style: GoogleFonts.play(
+                            fontWeight: FontWeight.w700,
+                            fontSize:20,
+                            color: Colors.grey),),
+
+                          TextButton(onPressed: () {
+                            Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => BookAppointment(),) );
+                          }, child: Text("Book appointment"))
+                        ],
+                      ),
+                    );
+                  }    
                       
                       return ListView.separated(
                       itemBuilder:((context, index) {

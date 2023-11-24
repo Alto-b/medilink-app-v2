@@ -52,7 +52,15 @@ class _DoctorViewPageState extends State<DoctorViewPage> {
                       child: ValueListenableBuilder(
                         valueListenable: doctorListNotifier,
                         builder: (BuildContext ctx, List<DoctorModel> doctorList,Widget? child) {
-        
+                           if (doctorList.isEmpty) {
+                    return Center(
+                      child: Text("Will be updated soon",
+                      style: GoogleFonts.play(
+                        fontWeight: FontWeight.w700,
+                        fontSize:20,
+                        color: Colors.grey),),
+                    );
+                  }
                         return ListView.separated(
                         itemBuilder:((context, index) {
                           final data=doctorList[index];

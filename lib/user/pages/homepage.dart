@@ -281,7 +281,7 @@ class _HomePageState extends State<HomePage> {
         //mini: true,
         backgroundColor: Colors.red[400],
         onPressed: () {
-          _launchDialer('123456789'); // Replace '123456789' with the specific number
+          _launchDialer('108'); // Replace '123456789' with the specific number
         },
         child: Icon(Icons.local_hospital, color: Colors.white), // Use the ambulance icon
       ),
