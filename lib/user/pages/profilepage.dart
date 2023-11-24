@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers, prefer_const_literals_to_create_immutables, unnecessary_string_interpolations
 
 
 
@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:medilink/guest/model/usermodel.dart';
 import 'package:medilink/guest/pages/login.dart';
-import 'package:medilink/main.dart';
 import 'package:medilink/styles/custom_widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -52,7 +51,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 void calculateAge() {
     if (currentUser != null) {
-      String dobString = currentUser!.dob ?? '';
+      String dobString = currentUser!.dob;
       DateTime dob = DateTime.parse(dobString);
       DateTime currentDate = DateTime.now();
       Duration difference = currentDate.difference(dob);
@@ -64,31 +63,12 @@ void calculateAge() {
   @override
   Widget build(BuildContext context) {
 
-//calculate age
-// String dobString = currentUser?.dob??''; // Assuming currentUser.dob is a string
-
-// DateTime dob = DateTime.parse(dobString);
-
-// DateTime currentDate = DateTime.now();
-// Duration difference = currentDate.difference(dob);
-// age = (difference.inDays / 365).floor();
-
-//print('User\'s age is $age years');}
-//age calculated
-
     return Scaffold(
 
       appBar: AppBar(
         title: Text("PROFILE PAGE",style: appBarTitleStyle(),),
         
       ),
-
-      //body
-      // body: Column(
-      //   children: [
-      //     Text("email: ")
-      //   ],
-      // ),
 
     body: currentUser!=null ?
     SingleChildScrollView(
@@ -135,14 +115,6 @@ void calculateAge() {
                         leading: Icon(Icons.date_range_outlined,color: Colors.amber,),
                         title: Text("$age Years",style: ProfileTextStyle(),),
                       ),
-                      //  Spacer(),
-                      // Row(
-                      //   mainAxisSize: MainAxisSize.max,
-                      //   mainAxisAlignment: MainAxisAlignment.end,
-                      //   children: [
-                      //     ElevatedButton(onPressed: (){}, child: Text("Edit profile")),
-                      //   ],
-                      // )
                     ],
                   ),
                 ),

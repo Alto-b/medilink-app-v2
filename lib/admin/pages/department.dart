@@ -1,10 +1,9 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, no_leading_underscores_for_local_identifiers
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, no_leading_underscores_for_local_identifiers, avoid_unnecessary_containers
 
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:hive/hive.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:medilink/admin/db/dept_functions.dart';
 import 'package:medilink/admin/model/deptmodel.dart';
@@ -47,20 +46,6 @@ class _DepartmentPageState extends State<DepartmentPage> {
       }
     }
 
-// //to add department
-//     Future<void> editDepartmentButton() async{
-//       final _dept=_departmentController.text.trim();
-//       final imagepath=_selectedImage!.path;
-//       if(_dept.isEmpty){
-//         //print('empty');
-//         return ;
-//       }
-//       else{
-//       //print('$_dept');
-//       //final _department=DepartmentModel( dept: _dept,photo:imagepath ,id:-1);
-//       editDepartment(id, _dept, imagepath)
-//       }
-//     }
   @override
   Widget build(BuildContext context) {
 
@@ -113,7 +98,7 @@ class _DepartmentPageState extends State<DepartmentPage> {
                            
                                       
     
-                        child: Container(
+                        child: SizedBox(
                           child: ListTile(
                             horizontalTitleGap: 20,
                             contentPadding: EdgeInsets.all(5),
@@ -174,7 +159,7 @@ class _DepartmentPageState extends State<DepartmentPage> {
                         //borderRadius: BorderRadius.circular(10)
                       ),
                       child: _selectedImage != null
-                          ? Image.file(_selectedImage! as File, fit: BoxFit.fill,)
+                          ? Image.file(_selectedImage!, fit: BoxFit.fill,)
                           : Center(
                               child: Icon(Icons.add_a_photo))),
                 ),
@@ -234,7 +219,7 @@ class _DepartmentPageState extends State<DepartmentPage> {
         
         //_selectedImage=photo as File?;
       return SingleChildScrollView(
-        child: Container(  
+        child: SizedBox(  
           height: 600, 
                child: Padding(
                padding: const EdgeInsets.all(25.0),

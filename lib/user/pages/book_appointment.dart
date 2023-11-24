@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:medilink/admin/db/appointment_functions.dart';
 import 'package:medilink/admin/model/appointment_model.dart';
@@ -28,9 +27,7 @@ class _BookAppointmentState extends State<BookAppointment> {
 
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController=TextEditingController();
-  final TextEditingController _genderController=TextEditingController();
   final TextEditingController _dobController=TextEditingController();
-  final TextEditingController _maritalController=TextEditingController();
   final TextEditingController _emailController=TextEditingController();
   final TextEditingController _mobileController=TextEditingController();
   final TextEditingController _addressController=TextEditingController();
@@ -66,7 +63,7 @@ class _BookAppointmentState extends State<BookAppointment> {
   }
 void calculateAge() {
     if (currentUser != null) {
-      String dobString = currentUser!.dob ?? '';
+      String dobString = currentUser!.dob;
       DateTime dob = DateTime.parse(dobString);
       DateTime currentDate = DateTime.now();
       Duration difference = currentDate.difference(dob);
@@ -90,38 +87,6 @@ void calculateAge() {
                 child: Column(
                   children: [
                     SizedBox(height: 20,),
-      //               Row(
-      //                 mainAxisSize: MainAxisSize.min,
-      //                 children: [
-      // // Title Dropdown
-      //                   DropdownButtonFormField<String>(
-      //                     hint:Text("Title"),
-      //                     value: selectedTitle,
-      //                     onChanged: (String? newValue) {
-      //                       setState(() {
-      //                         selectedTitle = newValue;
-      //                       });
-      //                     },
-      //                     items: titles.map((String title) {
-      //                       return DropdownMenuItem<String>(
-      //                         value: title,
-      //                         child: Text(title), 
-      //                       );
-      //                     }).toList(),
-      //                   ),SizedBox(width: 20,),
-      
-      // //Full Name
-      //               Expanded(
-      //                 child: TextFormField(
-      //                   controller: _nameController,
-      //                   validator: validateFullName,
-      //                   decoration: InputDecoration(
-      //                     hintText: "Full Name",
-      //                   ),
-      //                 ),
-      //               ),
-      //                 ],
-      //               ),SizedBox(height: 20,),
 
        DropdownButtonFormField<String>(
         validator: (value){
@@ -434,13 +399,6 @@ void showSnackBarFailed(BuildContext context, String message) {
       duration: Duration(seconds: 3), 
     ),
   );
-//   setState(() {
-//      Future.delayed(const Duration(seconds: 3), () {
-//   Navigator.push(context, MaterialPageRoute(builder: (context) => TelemedicinePage(),));
- 
-// });
-
-//   });
 }
 
 }

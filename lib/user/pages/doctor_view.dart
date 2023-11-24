@@ -1,9 +1,8 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
 
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medilink/admin/db/doctor_functions.dart';
 import 'package:medilink/admin/model/doctor_model.dart';
@@ -47,7 +46,7 @@ class _DoctorViewPageState extends State<DoctorViewPage> {
             children: [
               //Text("list of doctors"),
         //listener
-                  Container(
+                  SizedBox(
                     //color: Colors.red,
                       height: 680,
                       child: ValueListenableBuilder(

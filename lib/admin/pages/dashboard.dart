@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medilink/admin/pages/appointment_view.dart';
 import 'package:medilink/admin/pages/department.dart';
@@ -12,8 +11,6 @@ import 'package:medilink/admin/pages/hospital.dart';
 import 'package:medilink/admin/pages/statistics.dart';
 import 'package:medilink/admin/pages/telemedicine_view.dart';
 import 'package:medilink/guest/pages/signup.dart';
-import 'package:medilink/styles/custom_widgets.dart';
-import 'package:medilink/user/pages/telemedicine.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({super.key});

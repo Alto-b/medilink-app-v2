@@ -1,11 +1,8 @@
 
 
-// ignore_for_file: prefer_const_constructors
-
-  import 'dart:ui';
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/painting/text_style.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 

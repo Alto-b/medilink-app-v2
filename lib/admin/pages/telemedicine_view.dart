@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:medilink/admin/db/telemedicine_functions.dart';
@@ -65,7 +67,7 @@ class _TelemedicineViewPageState extends State<TelemedicineViewPage> {
                                    },
            
                                 icon:Icons.call,foregroundColor: Colors.white,
-                                backgroundColor: Color.fromARGB(206, 90, 214, 19),
+                                backgroundColor: const Color.fromARGB(206, 90, 214, 19),
                                 ),
                                ] ),
                              

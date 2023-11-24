@@ -1,14 +1,12 @@
-// ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers, use_build_context_synchronously
+// ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers, use_build_context_synchronously, override_on_non_overriding_member
 
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:medilink/admin/pages/dashboard.dart';
 import 'package:medilink/guest/db/user_functions.dart';
 import 'package:medilink/guest/model/usermodel.dart';
 import 'package:medilink/guest/pages/login.dart';
-import 'package:email_auth/email_auth.dart';
 import 'package:medilink/main.dart';
 import 'package:medilink/user/mainpage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -22,16 +20,7 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
 
-  //late EmailAuth emailAuth;
-
    @override
-  // void initState() {
-  //   super.initState();
-  //   // Initialize the package
-  //   emailAuth =  EmailAuth(
-  //     sessionName: "Signup session",
-  //   );
-  // }
 
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController=TextEditingController();
@@ -180,15 +169,6 @@ class _SignUpPageState extends State<SignUpPage> {
               TextButton(onPressed: (){
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage(),));
               }, child: Text("Already has an account ?")),
-              
-            //for test purpose 
-              // TextButton(onPressed: (){
-              //   Navigator.push(context,MaterialPageRoute(builder: (context) => MainPage(),));
-              // }, child: Text("user")),
-              // TextButton(onPressed: (){
-              //   Navigator.push(context,MaterialPageRoute(builder: (context) => DashBoard(),));
-              // }, child: Text("dashboard")),
-              
               ],
             ))
           ],
@@ -323,7 +303,6 @@ void userCheck(String email)async{
     final String gender = selectedGender ?? ""; 
     final String email = _emailController.text.trim();
     final String pass = _passwordController.text.trim();
-    final String cpass = _cpasswordController.text.trim();
 
       if(_formKey.currentState!.validate() && _passwordController.text==_cpasswordController.text){
         //print('empty');

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:medilink/admin/model/appointment_model.dart';
 import 'package:medilink/admin/model/deptmodel.dart';
@@ -61,7 +60,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Medilink',
       theme: ThemeData(
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           centerTitle: true
         ),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -69,7 +68,7 @@ class MyApp extends StatelessWidget {
       ),
       
       
-      home: Splash()
+      home: const Splash()
     );
   }
 }

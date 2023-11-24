@@ -106,7 +106,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
                     //submitFeedback();
                     submit();
                     Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage(),));
-                    print("successful");
+                    //print("successful");
                     // _titleController.clear();
                     // _contentController.clear();
                   }, child: Text("Submit"))

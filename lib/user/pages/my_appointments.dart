@@ -1,5 +1,6 @@
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:medilink/admin/db/appointment_functions.dart';
@@ -59,12 +60,6 @@ Future<void> getUser() async {
 
       appBar: AppBar(
         title: Text("MY APPOINTMENTS",style: appBarTitleStyle(),),
-        actions: [
-          IconButton(onPressed: (){
-            print(currentUser!.fullname);
-            print(currentUser!.email);
-          }, icon: Icon(Icons.search))
-        ],
       ),
 
       body: currentUser!=null ?

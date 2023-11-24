@@ -1,5 +1,7 @@
 
 
+// ignore_for_file: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
+
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:medilink/admin/model/telemedicine_model.dart';
@@ -11,17 +13,10 @@ Future<void> addTelemedicine(TelemedicineModel value) async{
   final teleDB = await Hive.openBox<TelemedicineModel>('telemedicine_db');
   final id=await teleDB.add(value);
   final data = teleDB.get(id);
-  await teleDB.put(id,TelemedicineModel(name: data!.name, address: data!.address, email: data!.email, mobile: data!.mobile, symptoms: data!.symptoms, medicine: data!.medicine,date: data!.date,id: id) );
+  await teleDB.put(id,TelemedicineModel(name: data!.name, address: data.address, email: data.email, mobile: data.mobile, symptoms: data.symptoms, medicine: data.medicine,date: data.date,id: id) );
   getTelemedicine();
 }
 
-//to read telemedicine
-// Future<void> getTelemedicine() async{
-//   final teleDB = await Hive.openBox<TelemedicineModel>('telemedicine_db');
-//   telemedicineListNotifier.value.clear();
-//   telemedicineListNotifier.value.addAll(teleDB.values);
-//   telemedicineListNotifier.notifyListeners();
-// }
 Future<void> getTelemedicine() async {
   final teleDB = await Hive.openBox<TelemedicineModel>('telemedicine_db');
   telemedicineListNotifier.value.clear();

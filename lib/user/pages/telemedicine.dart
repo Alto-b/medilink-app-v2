@@ -7,7 +7,6 @@ import 'package:medilink/admin/db/telemedicine_functions.dart';
 import 'package:medilink/admin/model/telemedicine_model.dart';
 import 'package:medilink/styles/custom_widgets.dart';
 import 'package:medilink/user/mainpage.dart';
-import 'package:navigator/navigator.dart' as navigator;
 
 
 class TelemedicinePage extends StatefulWidget {
@@ -292,13 +291,6 @@ void showSnackBarFailed(BuildContext context, String message) {
       duration: Duration(seconds: 3), 
     ),
   );
-//   setState(() {
-//      Future.delayed(const Duration(seconds: 3), () {
-//   Navigator.push(context, MaterialPageRoute(builder: (context) => TelemedicinePage(),));
- 
-// });
-
-//   });
 }
 
 }

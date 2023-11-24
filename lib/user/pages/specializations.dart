@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'dart:io';
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:medilink/admin/db/dept_functions.dart';
 import 'package:medilink/admin/model/deptmodel.dart';
@@ -45,63 +43,6 @@ final  TextEditingController _searchController = TextEditingController();
             padding: const EdgeInsets.all(15.0),
             child: Column(
                 children: [
-                  //search field
-                //   Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   mainAxisSize: MainAxisSize.min,
-                //   children: [
-                //     Container(
-                //       height: 60,
-                //       width: 60,
-                      
-                //       decoration: BoxDecoration(color: const Color.fromARGB(255, 255, 255, 255),
-                //        borderRadius: BorderRadius.only(topLeft: Radius.circular(30),bottomLeft: Radius.circular(30)),
-                //        boxShadow: [
-                //           BoxShadow(
-                //             color: Colors.grey.withOpacity(0.5),
-                //             blurRadius: 10,
-                //             offset: Offset(0, 5)
-                //           )
-                //         ]
-                //       ),
-                //         child: Icon(Icons.search),
-                //     ),
-                //     Container(
-                //       height: 60,
-                //       width: 280,
-                //       decoration: BoxDecoration(
-                //         color: Color.fromARGB(255, 255, 255, 255),
-                //         borderRadius: BorderRadius.only(topRight: Radius.circular(30),bottomRight: Radius.circular(30)),
-                //         boxShadow: [
-                //           BoxShadow(
-                //             color: Colors.grey.withOpacity(0.5),
-                //             blurRadius: 10,
-                //             offset: Offset(3, 4)
-                //           )
-                //         ]
-                //       ),
-                //       child:
-                //           TextField(
-                //             controller: _searchController,
-                //             decoration: InputDecoration(
-                //                 border: OutlineInputBorder(
-                //                   borderRadius: BorderRadius.circular(50),
-                //                   borderSide: BorderSide.none
-                //                 ),
-                //                 hintText: "Search.."
-                //             ),
-                //             onChanged: (query) {
-                //               setState(() {
-                                
-                //               });
-                //             },
-                //           ),
-                       
-                //     ),
-                //   ],
-                // ),
-                //   SizedBox(height: 20,),
-
                   //listing specialization
     Padding(
       padding: const EdgeInsets.all(10.0),

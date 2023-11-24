@@ -1,7 +1,8 @@
 
+// ignore_for_file: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member, unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:medilink/admin/db/dept_functions.dart';
 import 'package:medilink/admin/model/hospmodel.dart';
 
 ValueNotifier<List<HospModel>> hospListNotifier=ValueNotifier([]);
@@ -39,7 +40,7 @@ Future<void> edithospital(int id, String updatedhospitalName) async {
   final existingHospital = hospDB.values.firstWhere((hosp) => hosp.id == id);
 
   if (existingHospital == null) {
-    print("no dept");
+    //print("no dept");
   }
   else{
     // Update the department's name
@@ -56,7 +57,7 @@ Future<void> edithospital(int id, String updatedhospitalName) async {
 //to search departments
 Future<List<HospModel>> searchDepartments(String keyword) async {
   final hospDB = await Hive.openBox<HospModel>('dept_db');
-  final hospitals = await hospDB.values.toList();
+  final hospitals = hospDB.values.toList();
 
   // Use the `where` method to filter the data based on the search criteria
   final filteredHospitals = hospitals.where((hospital) {

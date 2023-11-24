@@ -11,7 +11,6 @@ import 'package:medilink/admin/model/doctor_model.dart';
 import 'package:medilink/admin/model/hospmodel.dart';
 import 'package:medilink/admin/pages/doctor_list.dart';
 import 'package:medilink/styles/custom_widgets.dart';
-import 'package:medilink/user/pages/specializations.dart';
 
 class AddDoctor extends StatefulWidget {
   const AddDoctor({super.key});
@@ -95,7 +94,7 @@ void updateLists() {
                         //borderRadius: BorderRadius.circular(10)
                       ),
                       child: _selectedImage != null
-                          ? Image.file(_selectedImage! as File, fit: BoxFit.fill,)
+                          ? Image.file(_selectedImage!, fit: BoxFit.fill,)
                           : Center(
                               child: Icon(Icons.add_a_photo))),
                 ),
@@ -373,8 +372,8 @@ Future<void> submit() async{
 
 
   if(_formKey.currentState!.validate()){
-    final _doctor=DoctorModel(name: name, gender: gender, qualification: qualification, dob: dob, doj: doj, hospital: hospital, specialization: specialization,photo:imagepath);
-    addDoctor(_doctor);
+    final doctor=DoctorModel(name: name, gender: gender, qualification: qualification, dob: dob, doj: doj, hospital: hospital, specialization: specialization,photo:imagepath);
+    addDoctor(doctor);
     showSnackBarSuccess(context, "Details added successfully!");
     Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorListPage(),));
   }

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:medilink/admin/model/hospmodel.dart';
 import 'package:medilink/admin/db/hosp_functions.dart';

@@ -3,12 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:medilink/admin/pages/dashboard.dart';
-import 'package:medilink/guest/db/user_functions.dart';
 import 'package:medilink/guest/model/usermodel.dart';
 import 'package:medilink/guest/pages/signup.dart';
 import 'package:medilink/main.dart';
 import 'package:medilink/user/mainpage.dart';
-import 'package:medilink/user/pages/homepage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {

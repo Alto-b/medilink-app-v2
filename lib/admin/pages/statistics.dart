@@ -2,10 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:medilink/admin/db/appointment_functions.dart';
-import 'package:medilink/admin/db/dept_functions.dart';
 import 'package:medilink/admin/db/doctor_functions.dart';
 import 'package:medilink/admin/db/telemedicine_functions.dart';
-import 'package:medilink/admin/model/doctor_model.dart';
 import 'package:medilink/admin/pages/appointment_view.dart';
 import 'package:medilink/admin/pages/doctor_list.dart';
 import 'package:medilink/admin/pages/telemedicine_view.dart';

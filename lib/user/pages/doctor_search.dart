@@ -10,7 +10,7 @@ class DoctorSearchDelegate extends SearchDelegate<DoctorModel> {
     // Actions to display at the top right (e.g., a clear button).
     return [
       IconButton(
-        icon: Icon(Icons.clear),
+        icon: const Icon(Icons.clear),
         onPressed: () {
           query = '';
         },
@@ -22,7 +22,7 @@ class DoctorSearchDelegate extends SearchDelegate<DoctorModel> {
   Widget buildLeading(BuildContext context) {
     // Leading widget (usually a back button).
     return IconButton(
-      icon: Icon(Icons.arrow_back),
+      icon: const Icon(Icons.arrow_back),
       onPressed: () {
        Navigator.of(context).pop();
       },

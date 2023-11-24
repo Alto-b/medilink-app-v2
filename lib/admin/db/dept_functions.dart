@@ -1,5 +1,7 @@
 
 
+// ignore_for_file: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member, unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:medilink/admin/model/deptmodel.dart';
@@ -35,7 +37,7 @@ Future<void> deleteDept(int id) async{
 //to search departments
 Future<List<DepartmentModel>> searchDepartments(String keyword) async {
   final deptDB = await Hive.openBox<DepartmentModel>('dept_db');
-  final departments = await deptDB.values.toList();
+  final departments =  deptDB.values.toList();
 
   // Use the `where` method to filter the data based on the search criteria
   final filteredDepartments = departments.where((department) {
@@ -59,7 +61,7 @@ Future<void> editDepartment(int id, String updatedDepartmentName,String updatedP
   final existingDepartment = deptBox.values.firstWhere((dept) => dept.id == id);
 
   if (existingDepartment == null) {
-    print("no dept");
+    //print("no dept");
   }
   else{
     // Update the department's name

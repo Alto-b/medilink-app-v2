@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
 
 import 'dart:io';
 
@@ -86,7 +86,7 @@ void updateLists() {
             children: [
               //Text("list of doctors"),
         //listener
-                  Container(
+                  SizedBox(
                     //color: Colors.red,
                       height: 690,
                       child: ValueListenableBuilder(
@@ -209,7 +209,7 @@ void updateLists() {
                           //borderRadius: BorderRadius.circular(10)
                         ),
                         child: _selectedImage != null
-                            ? Image.file(_selectedImage! as File, fit: BoxFit.fill,)
+                            ? Image.file(_selectedImage!, fit: BoxFit.fill,)
                             : Center(
                                 child: Icon(Icons.add_a_photo))),
                   ),

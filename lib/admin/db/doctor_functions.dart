@@ -1,5 +1,7 @@
 
 
+// ignore_for_file: unnecessary_null_comparison, invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
+
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:medilink/admin/model/doctor_model.dart';
@@ -11,8 +13,8 @@ Future<void> addDoctor(DoctorModel value) async{
   final doctorDB = await Hive.openBox<DoctorModel>('doctor_db');
   final id=await doctorDB.add(value);
   final data = doctorDB.get(id);
-  await doctorDB.put(id,DoctorModel(name: data!.name, gender: data!.gender, qualification:data!.qualification, dob: data!.dob, doj: data!.doj, hospital:data!.hospital, specialization: data!.specialization,photo: data!.photo,id: id) );
-  print(doctorDB.values);
+  await doctorDB.put(id,DoctorModel(name: data!.name, gender: data.gender, qualification:data.qualification, dob: data.dob, doj: data.doj, hospital:data.hospital, specialization: data.specialization,photo: data.photo,id: id) );
+  //print(doctorDB.values);
 }
 
 //to get doctors

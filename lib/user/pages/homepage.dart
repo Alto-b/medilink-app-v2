@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:medilink/admin/pages/doctor_list.dart';
 import 'package:medilink/user/pages/about_us.dart';
 import 'package:medilink/user/pages/book_appointment.dart';
 import 'package:medilink/user/pages/doctor_view.dart';
