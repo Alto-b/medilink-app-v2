@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medilink/admin/pages/appointment_view.dart';
@@ -10,7 +9,7 @@ import 'package:medilink/admin/pages/feedbackview.dart';
 import 'package:medilink/admin/pages/hospital.dart';
 import 'package:medilink/admin/pages/statistics.dart';
 import 'package:medilink/admin/pages/telemedicine_view.dart';
-import 'package:medilink/guest/pages/signup.dart';
+import 'package:medilink/functions.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({super.key});
@@ -148,7 +147,6 @@ class _DashBoardState extends State<DashBoard> {
       },
       child: CircleAvatar(
         radius:20,
-        //backgroundImage: NetworkImage('https://i.ibb.co/YZWjL9Y/Screenshot-2023-10-22-204311-removebg-preview.png'),
         backgroundColor: Colors.transparent,
         child: Icon(Icons.logout,color: Colors.white,size: 25,)
       ),
@@ -190,24 +188,4 @@ class _DashBoardState extends State<DashBoard> {
     );
 
 
-
-//logout fn
-     logOut(BuildContext context){
-      showDialog(context: context, 
-      builder: (BuildContext context){
-          return AlertDialog(
-            title: Text("Log Out"),
-            content: Text("Are you sure ?"),
-            actions: [
-              TextButton(onPressed: (){
-                //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignUpPage(),));
-                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => SignUpPage(),), (route) => false);
-              }, child: Text("Confirm")),
-              TextButton(onPressed: (){
-                Navigator.of(context).pop();
-              }, child: Text("Close"))
-            ],
-          );
-      });
-    }
   }

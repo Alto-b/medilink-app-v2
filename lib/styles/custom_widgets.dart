@@ -102,3 +102,8 @@ TextStyle ProfileTextStyle() => TextStyle(fontWeight: FontWeight.w600);
     borderRadius: BorderRadius.circular(20),
     color: Colors.grey[200]
   );
+
+  //text styles
+ TextStyle headingsTextStyle() => TextStyle(color:Colors.deepPurple,fontWeight: FontWeight.w700,fontSize: 18);
+
+

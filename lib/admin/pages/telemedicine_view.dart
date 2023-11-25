@@ -98,10 +98,7 @@ class _TelemedicineViewPageState extends State<TelemedicineViewPage> {
                                   Text('Address: ${data.address}'),
                                   
                                 ],
-                              ),  
-                              // trailing:IconButton(onPressed: (){
-                              //   // _launchDialer(data.mobile);
-                              //  }, icon: Icon(Icons.call))                  
+                              ),             
                             ),
                           ),
                           

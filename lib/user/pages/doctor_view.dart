@@ -68,7 +68,6 @@ class _DoctorViewPageState extends State<DoctorViewPage> {
                           return Container(
                             child: ListTile(
                               onTap: () {
-                                //_detailSheet(context,data.id!,data.dob,data.doj,data.gender,data.hospital,data.name,data.photo,data.qualification,data.specialization);
                               _detailSheet(context, data.id!, data.name,data.dob,data.doj, data.gender, data.photo, data.qualification, data.qualification,data.hospital);
                               },
                               //tileColor: Colors.blue,
@@ -148,5 +147,4 @@ void _detailSheet(BuildContext context,int id,String name,String dob,String doj,
       );
     });
 }
-
 }

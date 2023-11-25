@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:medilink/styles/custom_widgets.dart';
 import 'package:medilink/user/pages/about_us.dart';
 import 'package:medilink/user/pages/book_appointment.dart';
 import 'package:medilink/user/pages/doctor_view.dart';
@@ -237,7 +238,7 @@ class _HomePageState extends State<HomePage> {
                         child: Column(children: [
                           // Icon(Icons.schedule),
                           TextButton(onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => AboutUsPage(),));                          }, child: Column(
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => AboutUsPage(),));}, child: Column(
                             children: [
                               Icon(Icons.info_outline,size: 50,),
                               Text("About ",style: TextStyle(fontSize: 11),textAlign: TextAlign.center),
@@ -251,17 +252,7 @@ class _HomePageState extends State<HomePage> {
                       Container(
                         alignment: Alignment.center,
                         height: 100,width: 100,
-                        //decoration:BoxDecoration(border: Border.all(color: Colors.blueGrey),borderRadius: BorderRadius.circular(20)) ,
-                        //color: Colors.red,
                         child: Column(children: [
-                          // Icon(Icons.schedule),
-                          // TextButton(onPressed: (){}, child: Column(
-                          //   children: [
-                          //    // Icon(Icons.business,size: 50,),
-                          //     Text(" ",style: TextStyle(fontSize: 11),textAlign: TextAlign.center),
-                          //     Text("",style: TextStyle(fontSize: 11),textAlign: TextAlign.center),
-                          //   ],
-                          // ))
                         ]),
                       ),
                     ],
@@ -288,9 +279,6 @@ class _HomePageState extends State<HomePage> {
 
     );
   }
-
- 
-
     //launch dialer
   void _launchDialer(String phoneNumber) async{
 
@@ -301,25 +289,4 @@ class _HomePageState extends State<HomePage> {
           SnackBar(content: Text("couldn't launch dialer"));
       }
     } 
-
-//text styles
- TextStyle headingsTextStyle() => TextStyle(color:Colors.deepPurple,fontWeight: FontWeight.w700,fontSize: 18);
-
-
-//options style
-
-  BoxDecoration optionsBoxDecoration() => BoxDecoration(
-    color: Colors.white,
-    // border: Border.all(
-    //   //color: Colors.blueGrey,width: 0.5
-    //   ),
-      borderRadius: BorderRadius.circular(10),
-      boxShadow:[
-        BoxShadow(
-          spreadRadius: 1,
-           blurRadius: 3,
-           //offset: Offset(-3, -1),
-          color:Colors.grey.withOpacity(.5),
-          )] );
-
 }

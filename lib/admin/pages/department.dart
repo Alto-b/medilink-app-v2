@@ -205,12 +205,9 @@ class _DepartmentPageState extends State<DepartmentPage> {
         
                 ],
               )),
-                                    ),
-                                 );
-                               }, );
+           )    );
+          }, );
   }
-
-
  //to edit section
   void _editSheet(BuildContext context,String photo,String department,int id){
     _editController.text=department;

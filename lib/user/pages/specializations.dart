@@ -57,6 +57,7 @@ final  TextEditingController _searchController = TextEditingController();
             ? departmentList
             : departmentList.where((dept) =>
                 dept.dept.toLowerCase().contains(_searchController.text.toLowerCase())).toList();
+           
             if (departmentList.isEmpty) {
                     return Center(
                       child: Text("Will be updated soon",
@@ -70,7 +71,7 @@ final  TextEditingController _searchController = TextEditingController();
         return GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing: 8.0, // You can adjust the spacing as needed
+            crossAxisSpacing: 8.0,
             mainAxisSpacing: 8.0,
           ),
           itemBuilder: ((context, index) {
@@ -110,16 +111,11 @@ final  TextEditingController _searchController = TextEditingController();
       ),
     ),
     )
-                
-
-
-
-                ],
-            ),
-          ),
+         ],
         ),
-      )
-
+      ),
+     ),
+    )
     );
   }
 }

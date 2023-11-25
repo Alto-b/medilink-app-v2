@@ -383,40 +383,6 @@ void updateLists() {
       );
        }, );
   }
-
-// Future<void> submit() async{
-//   final imagepath=_selectedImage!.path;
-//   final String name=_nameController.text.trim();
-//   final String gender=selectedGender ?? "";
-//   final String qualification=_qualificationController.text.trim();
-//   final String dob=_dobController.text.trim();
-//   final String doj=_dojController.text.trim();
-//   final String hospital=selectedHospitalName!;
-//   final String specialization=selectedDepartmentName!;
-
-
-//   if(_formKey.currentState!.validate()){
-//     final _doctor=DoctorModel(name: name, gender: gender, qualification: qualification, dob: dob, doj: doj, hospital: hospital, specialization: specialization,photo:imagepath);
-//     //addDoctor(_doctor);
-//     editDoctor(id, updatedPhoto, updatedName, updatedGender, updatedQualification, updatedHospital, updatedDOB, updatedDOJ, updatedDept)
-//     showSnackBarSuccess(context, "Details added successfully!");
-//     Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorListPage(),));
-//   }
-//   else{
-//       showSnackBarFailed(context, "Couldn't add details!");
-//   }
-// }
-
-//code for snackbar failed  
-// void showSnackBarFailed(BuildContext context, String message) {
-//   ScaffoldMessenger.of(context).showSnackBar(
-//     SnackBar(
-//       content: Text(message),
-//       duration: Duration(seconds: 3), 
-//     ),
-//   );
-// }
-
 //code for snackbar success  
 void showSnackBarSuccess(BuildContext context, String message) {
   ScaffoldMessenger.of(context).showSnackBar(

@@ -12,23 +12,6 @@ class AboutUsPage extends StatefulWidget {
 
 class _AboutUsPageState extends State<AboutUsPage> {
 
-
-//  GoogleMapController? mapController;
-//   final Set<Marker> _markers = {}; // Initialize markers as an empty set
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     // Initialize _initialLocation here
-//     _markers.add(
-//       Marker(
-//         markerId: MarkerId('hospital-marker'),
-//         position: LatLng(37.7749, -122.4194),
-//         infoWindow: const InfoWindow(title: 'Hospital Name'),
-//       ),
-//     );
-//   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,31 +117,11 @@ class _AboutUsPageState extends State<AboutUsPage> {
                     IconButton(onPressed: (){}, icon: Icon(Icons.map))
                   ],
                 ),
-                // Row(
-                //   children: [
-                //       GoogleMap(initialCameraPosition: CameraPosition(
-                //         target:LatLng(37.7749, -122.4194),
-                //         zoom: 15,
-                //         ),
-                //         onMapCreated: (GoogleMapController controller){
-                //           mapController=controller;
-                //         },
-                //         markers: _markers,)
-                //   ],
-                // )
-                  
                 ],
               ),
             ),
           ),
         ),
-
-        // floatingActionButton: FloatingActionButton(
-        //     onPressed: (){},
-        //     child: Icon(Icons.call,color: Colors.white,),
-        //     tooltip: "Contact us",
-        //     elevation: 20,
-        //     backgroundColor:Color.fromARGB(143, 102, 240, 107),),
     );
   }
 }
