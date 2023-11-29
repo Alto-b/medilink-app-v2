@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:medilink/guest/db/user_functions.dart';
 import 'package:medilink/guest/model/usermodel.dart';
 import 'package:medilink/guest/pages/login.dart';
@@ -129,7 +130,7 @@ class _SignUpPageState extends State<SignUpPage> {
                SizedBox(height: 30,),
                //password
                TextFormField(
-                  validator:validatepassword ,
+                  validator:validatePassword ,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   obscureText: true,
                   controller: _passwordController,
@@ -185,10 +186,8 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
 //to select date
-  Future<void> _selectDate(BuildContext context) async {
-    //print("dob clicked");
+Future<void> _selectDate(BuildContext context) async {
   DateTime selectedDate = DateTime.now(); // Initialize with the current date.
-
   final DateTime? picked = await showDatePicker(
     context: context,
     initialDate: DateTime(2000),
@@ -200,7 +199,8 @@ class _SignUpPageState extends State<SignUpPage> {
     // Update the selected date
     setState(() {
       selectedDate = picked;
-      _dobController.text = selectedDate.toLocal().toString().split(' ')[0];
+      final formattedDate = DateFormat('dd-MM-yyyy').format(selectedDate);
+      _dobController.text = formattedDate;
     });
   }
 }
@@ -208,11 +208,14 @@ class _SignUpPageState extends State<SignUpPage> {
 
 //to validate full name
 String? validateFullName(String? value) {
-  
   final trimmedValue = value?.trim();
 
   if (trimmedValue == null || trimmedValue.isEmpty) {
     return 'Full Name is required';
+  }
+
+  if (trimmedValue.length < 3 || trimmedValue.length > 25) {
+    return 'Full Name should be between 3 and 25 characters';
   }
 
   final RegExp nameRegExp = RegExp(r'^[a-zA-Z ]+$');
@@ -221,8 +224,9 @@ String? validateFullName(String? value) {
     return 'Full Name can only contain letters and spaces';
   }
 
-  return null; 
+  return null;
 }
+
 
 //to validate email
 String? validateEmail(String? value) {
@@ -245,14 +249,25 @@ String? validateEmail(String? value) {
 }
 
 //to validate password
-String? validatepassword(String? value){
+String? validatePassword(String? value) {
   final trimmedValue = value?.trim();
 
-  if(trimmedValue == null || trimmedValue.isEmpty){
-    return 'Cannot be empty';
+  if (trimmedValue == null || trimmedValue.isEmpty) {
+    return 'Password cannot be empty';
   }
+
+  final passwordRegExp = RegExp(
+    r'^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#\$%^&*()_+])[a-zA-Z\d!@#\$%^&*()_+]{8,}$',
+  );
+
+  if (!passwordRegExp.hasMatch(trimmedValue)) {
+    return 'Password must contain at least one alphabet, one number, and one special symbol';
+  }
+
   return null;
 }
+
+
 
 //to validate conform password
 String? validatecpassword(String? value){
@@ -310,17 +325,10 @@ void userCheck(String email)async{
       final _user=UserModel(fullname: fullName, dob: dateOfBirth, gender: gender, email: email, password: pass);
       addUser(_user);
       //Navigator.pushReplacement(context,MaterialPageRoute(builder:(context) => LoginPage(),));
-      login(_emailController.text, _passwordController.text, context);
-      
-       
+      login(_emailController.text, _passwordController.text, context);     
       }
       else{
         showSnackBar(context, 'User registration failed!');
-          _nameController.clear();
-                   _dobController.clear();
-                   _emailController.clear();
-                   _passwordController.clear();
-                   _cpasswordController.clear();
       }
     }
 

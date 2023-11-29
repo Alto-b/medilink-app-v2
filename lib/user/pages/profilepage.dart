@@ -31,7 +31,8 @@ class _ProfilePageState extends State<ProfilePage> {
   void initState() {
     super.initState();
     // Call the getUser function when the page is initialized
-    getUser();    
+    getUser();  
+    calculateAge();  
   }
 
   Future<void> getUser() async {
@@ -46,8 +47,10 @@ class _ProfilePageState extends State<ProfilePage> {
       (user) => user.email == userEmail,
       //orElse: () => null,
     );
-    calculateAge();
-    setState(() {}); 
+    setState(() {
+      
+    });
+    
   }
 void calculateAge() {
     if (currentUser != null) {

@@ -280,8 +280,8 @@ void showSnackBarSuccess(BuildContext context, String message) {
       duration: Duration(seconds: 3), 
     ),
   );
-  Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage(),));
-}
+   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder:(context) => MainPage(),), (route) => false);
+  }
 //code for failed snackbar
 void showSnackBarFailed(BuildContext context, String message) {
   ScaffoldMessenger.of(context).showSnackBar(

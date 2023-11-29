@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:medilink/styles/custom_widgets.dart';
+import 'package:medilink/user/mainpage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HelpCenterPage extends StatefulWidget {
@@ -99,6 +100,10 @@ Future<void> launchEmail() async {
       query: 'body=$body&subject=$subject'
     );
     await launchUrl(emailLaunchUri);
+    _subjectController.clear();
+    _bodyController.clear();
+     Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder:(context) => MainPage(),), (route) => false);
+  
   }
 }
 

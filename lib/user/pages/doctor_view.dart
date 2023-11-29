@@ -133,7 +133,8 @@ void _detailSheet(BuildContext context,int id,String name,String dob,String doj,
                   style: GoogleFonts.dmSans(
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
-                    height: 1.4
+                    height: 1.4,
+                    
       
                     
       

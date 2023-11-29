@@ -367,7 +367,7 @@ Future<void> addAppointmentButton()async{
     final appointment=AppointmentModel(name: name, gender: gender, dob: dob, marital: marital, email: email, mobile: mobile, address: address,title:title,date: date,user: user) ;
     addAppointment(appointment);
     showSnackBarSuccess(context, 'We will contact you soon');
-    Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage(),));
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder:(context) => MainPage(),), (route) => false);
   }
   else{
     setState(() {
@@ -388,7 +388,8 @@ void showSnackBarSuccess(BuildContext context, String message) {
       duration: Duration(seconds: 3), 
     ),
   );
-  Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage(),));
+   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder:(context) => MainPage(),), (route) => false);
+  
 }
 //code for failed snackbar
 void showSnackBarFailed(BuildContext context, String message) {

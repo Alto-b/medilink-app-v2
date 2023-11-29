@@ -340,18 +340,20 @@ Future<void> _pickImage() async {
 }
 
 //to select doj
- Future<void> _selectDoj(BuildContext context) async {
-    //print("dob clicked");
-  DateTime selectedDate = DateTime.now(); // Initialize with the current date.
+Future<void> _selectDoj(BuildContext context) async {
+  DateTime currentDate = DateTime.now();
+  DateTime tenYearsFromNow = currentDate.add(Duration(days: 365 * 10)); // Set to 10 years from the current date.
+
+  DateTime selectedDate = currentDate; // Initialize with the current date.
 
   final DateTime? picked = await showDatePicker(
     context: context,
-    initialDate: DateTime(2000),
-    firstDate: DateTime(1900), // Start date for selection
-    lastDate: DateTime(2023), // End date for selection
+    initialDate: currentDate,
+    firstDate: currentDate.subtract(Duration(days: 365 * 50)), // Set to 50 years ago from the current date.
+    lastDate: tenYearsFromNow,
   );
 
-  if (picked != null && picked != selectedDate) {
+  if (picked != null && picked != currentDate) {
     // Update the selected date
     setState(() {
       selectedDate = picked;
@@ -359,6 +361,7 @@ Future<void> _pickImage() async {
     });
   }
 }
+
 
 Future<void> submit() async{
   final imagepath=_selectedImage!.path;
@@ -375,7 +378,7 @@ Future<void> submit() async{
     final doctor=DoctorModel(name: name, gender: gender, qualification: qualification, dob: dob, doj: doj, hospital: hospital, specialization: specialization,photo:imagepath);
     addDoctor(doctor);
     showSnackBarSuccess(context, "Details added successfully!");
-    Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorListPage(),));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DoctorListPage(),));
   }
   else{
       showSnackBarFailed(context, "Couldn't add details!");

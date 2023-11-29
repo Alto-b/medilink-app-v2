@@ -7,6 +7,7 @@ import 'package:medilink/admin/model/feedback_model.dart';
 import 'package:medilink/guest/model/usermodel.dart';
 import 'package:medilink/styles/custom_widgets.dart';
 import 'package:medilink/user/mainpage.dart';
+import 'package:medilink/user/pages/homepage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FeedbackPage extends StatefulWidget {
@@ -53,7 +54,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
   @override
   Widget build(BuildContext context) {
 
-    _titleController.text=currentUser!.email;
+    _titleController.text=currentUser?.email ?? "";
 
     return Scaffold(
 
@@ -79,6 +80,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
                   TextFormField(
                     controller: _titleController,
                     validator: validateEmail,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: InputDecoration(
                       hintText:"Email"
                       ),
@@ -94,6 +96,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
                       }
                       return null;
                     },
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: InputDecoration(
                     hintText: "Content",
                     ),
@@ -105,7 +108,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
                   ElevatedButton(onPressed: (){
                     //submitFeedback();
                     submit();
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage(),));
+                    
                   }, child: Text("Submit"))
                     ],
                   )
@@ -145,7 +148,7 @@ void submit() {
 
       submitFeedback();
       
-    }
+        }
   }
 
 //to submit feedback
@@ -170,7 +173,7 @@ Future<void> submitFeedback()async{
   else{
     final feedback=FeedBackModel(title: title, content: content,date: DateTime.now().toString());
     addFeedbacks(feedback);
-     _titleController.clear();
+     Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder:(context) => MainPage(),), (route) => false);
      _contentController.clear();
   }
 

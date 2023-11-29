@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                     //password textfield
                     TextFormField(
                       controller: _passwordController,
-                      validator: validatepassword,
+                      validator: validatePassword,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       obscureText: true,
                       decoration: InputDecoration(
@@ -116,12 +116,21 @@ String? validateEmail(String? value) {
 }
 
 //to validate password
-String? validatepassword(String? value){
+String? validatePassword(String? value) {
   final trimmedValue = value?.trim();
 
-  if(trimmedValue == null || trimmedValue.isEmpty){
-    return 'Cannot be empty';
+  if (trimmedValue == null || trimmedValue.isEmpty) {
+    return 'Password cannot be empty';
   }
+
+  final passwordRegExp = RegExp(
+    r'^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#\$%^&*()_+])[a-zA-Z\d!@#\$%^&*()_+]{8,}$',
+  );
+
+  if (!passwordRegExp.hasMatch(trimmedValue)) {
+    return 'Password must contain at least one alphabet, one number, and one special symbol';
+  }
+
   return null;
 }
 
@@ -129,7 +138,7 @@ String? validatepassword(String? value){
 void submit() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      if(_emailController.text=="admin@gmail.com" && _passwordController.text=="admin"){
+      if(_emailController.text=="admin@gmail.com" && _passwordController.text=="Admin@123"){
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DashBoard(),));
       }
       else{
@@ -163,18 +172,19 @@ if(user != null){
 
 }
 else{
-  showDialog(
-    context: context, 
-    builder: (context){
-      return AlertDialog(
-       // title : const Text("error"),
-        content: const Text("invalid email or password"),
-        actions: [
-          TextButton(onPressed:() => Navigator.pop(context), 
-          child: Text("Ok"))
-        ],
-      );
-    });
+ScaffoldMessenger.of(context).showSnackBar(
+  SnackBar(
+    content: Text(
+      'Invalid email or password',
+      style: TextStyle(
+        fontSize: 15,),
+    ),
+    backgroundColor: Colors.red[400],
+    // You can add more properties to the SnackBar if needed, such as duration, action, etc.
+  ),
+);
+
+
 }
 }
 
