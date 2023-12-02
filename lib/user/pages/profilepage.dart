@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:medilink/guest/model/usermodel.dart';
 import 'package:medilink/guest/pages/login.dart';
 import 'package:medilink/styles/custom_widgets.dart';
@@ -27,12 +28,18 @@ class _ProfilePageState extends State<ProfilePage> {
 
    
 
-   @override
-  void initState() {
-    super.initState();
-    // Call the getUser function when the page is initialized
-    getUser();  
-    calculateAge();  
+  @override
+void initState() {
+  super.initState();
+  // Call the getUser function when the page is initialized
+  getUser().then((_) {
+    calculateAge();
+  });
+}
+
+
+  void first(){
+    
   }
 
   Future<void> getUser() async {
@@ -54,11 +61,14 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 void calculateAge() {
     if (currentUser != null) {
-      String dobString = currentUser!.dob;
-      DateTime dob = DateTime.parse(dobString);
+     String dobString = currentUser!.dob;
+DateTime dob = DateFormat('MM-dd-yyyy').parse(dobString);
+
       DateTime currentDate = DateTime.now();
       Duration difference = currentDate.difference(dob);
       age = (difference.inDays / 365).floor();
+      print(dob);
+      print(age);
     }
   }
 
