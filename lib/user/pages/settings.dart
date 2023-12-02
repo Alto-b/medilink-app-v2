@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers
 
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:medilink/guest/db/user_functions.dart';
+import 'package:medilink/guest/model/usermodel.dart';
 import 'package:medilink/guest/pages/login.dart';
 import 'package:medilink/main.dart';
 import 'package:medilink/styles/custom_widgets.dart';
@@ -12,6 +15,8 @@ import 'package:url_launcher/url_launcher.dart';
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
 
+
+
   @override
   State<SettingsPage> createState() => _SettingsPageState();
 }
@@ -20,6 +25,33 @@ class _SettingsPageState extends State<SettingsPage> {
 
   bool isDarkMode=false;
 
+  String userEmail = ''; 
+  UserModel? currentUser;
+ 
+  @override
+  void initState() {
+    super.initState();
+    // Call the getUser function when the page is initialized
+    getUser();  
+  }
+
+  Future<void> getUser() async {
+    // Retrieve currentUser email from shared preferences
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+   
+   //if(currentUser != null)
+    userEmail = prefs.getString('currentUser') ?? '';
+    // check the user in Hive using the email
+    final userBox = await Hive.openBox<UserModel>('user_db');
+    currentUser = userBox.values.firstWhere(
+      (user) => user.email == userEmail,
+      //orElse: () => null,
+    );
+    setState(() {
+      
+    });
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +87,13 @@ class _SettingsPageState extends State<SettingsPage> {
               title: Text("HELP CENTER",style: listtileTitleStyle(),),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => HelpCenterPage(),));
+              },
+            ),
+             ListTile(
+              leading: Icon(Icons.logout_outlined),
+              title: Text("DELETE MY ACCOUNT",style: listtileTitleStyle(),),
+              onTap: () {
+                deleteUserButton();
               },
             ),
             ListTile(
@@ -143,4 +182,45 @@ void logOut(BuildContext context){
     Navigator.of(ctx).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx)=>LoginPage()), (route) => false);
     _sharedPrefs.setBool(SAVE_KEY_NAME, false);
   }
+
+//delete user
+deleteUserButton() {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text("Logout"),
+        content: Text("The account will be deleted"),
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              confirmDelete(context);
+            },
+            child: Text("Yes"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text("No"),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+confirmDelete(BuildContext context) {
+  Future.delayed(Duration(seconds: 2), () {
+    deleteUser(currentUser!.id!);
+    Navigator.pop(context); // Close the dialog after deleting the user
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginPage(),), (route) => false);
+  });
+}
+
+// deleteUser() {
+//   // Your logic for deleting the user goes here
+//   print("User deleted");
+// }
+
 }
