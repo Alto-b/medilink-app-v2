@@ -105,7 +105,7 @@ class _SettingsPageState extends State<SettingsPage> {
             Spacer(),
               Column(
               children: const [
-                Text("v.0.0.4")
+                Text("v.0.0.6")
               ],
             ),
             Row(
