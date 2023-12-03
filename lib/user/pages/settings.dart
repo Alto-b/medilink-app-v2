@@ -105,7 +105,7 @@ class _SettingsPageState extends State<SettingsPage> {
             Spacer(),
               Column(
               children: const [
-                Text("v.0.0.6")
+                Text("v.0.0.7")
               ],
             ),
             Row(
@@ -189,8 +189,8 @@ deleteUserButton() {
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: Text("Logout"),
-        content: Text("The account will be deleted"),
+        title: Text("Delete account"),
+        content: Text("The account will be deleted permanently"),
         actions: [
           ElevatedButton(
             onPressed: () {
